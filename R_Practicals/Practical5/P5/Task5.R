@@ -1,0 +1,15 @@
+wine.table=read.delim("wine.data.txt",sep=",")
+wine_data=wine.table[2:14]
+attach(wine_data)
+wine_data.s=scale(wine_data,center=TRUE,scale=TRUE)
+wine_data.cor=cor(wine_data)
+wine_data.cor
+wine_data.eig=eigen(wine_data.cor)
+wine_data.eigval=cbind(wine_data.eig$values)
+wine_data.eigval
+sum(wine_data.eigval)
+pr_wine_data.eigenval=wine_data.eigval/sum(wine_data.eigval)
+pr_wine_data.eigenval
+cumsum(pr_wine_data.eigenval)
+plot(pr_wine_data.eigenval)
+plot(cumsum(pr_wine_data.eigenval))
